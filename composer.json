@@ -2,6 +2,7 @@
     "name"        : "matthieumastadenis/couleur",
     "description" : "A modern PHP 8.1+ color library, compatible with CSS Color Module Level 4",
     "type"        : "library",
+    "license"     : "MIT",
     "authors"     : [
         {
             "name"  : "Matthieu Masta Denis",
