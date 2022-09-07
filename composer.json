@@ -1,0 +1,60 @@
+{
+    "name"        : "matthieumastadenis/couleur",
+    "description" : "A modern PHP 8.1+ color library, compatible with CSS Color Module Level 4",
+    "type"        : "library",
+    "authors"     : [
+        {
+            "name"  : "Matthieu Masta Denis",
+            "email" : "matthieu.denis@abitus.net"
+        }
+    ],
+    "require": {
+        "php" : "~8.1"
+    },
+    "require-dev" : {
+        "php"             : "~8.1",
+        "phpunit/phpunit" : "^9.5"
+    },
+    "autoload" : {
+        "files" : [
+            "src/utils/utils.php",
+            "src/utils/css/conversions.php",
+            "src/utils/css/utils.php",
+            "src/utils/hexRgb/conversions.php",
+            "src/utils/hexRgb/utils.php",
+            "src/utils/hsl/conversions.php",
+            "src/utils/hsl/utils.php",
+            "src/utils/hsv/conversions.php",
+            "src/utils/hsv/utils.php",
+            "src/utils/hwb/conversions.php",
+            "src/utils/hwb/utils.php",
+            "src/utils/lab/conversions.php",
+            "src/utils/lab/utils.php",
+            "src/utils/lch/conversions.php",
+            "src/utils/lch/utils.php",
+            "src/utils/linP3/conversions.php",
+            "src/utils/linP3/utils.php",
+            "src/utils/linProPhoto/conversions.php",
+            "src/utils/linProPhoto/utils.php",
+            "src/utils/linRgb/conversions.php",
+            "src/utils/linRgb/utils.php",
+            "src/utils/okLab/conversions.php",
+            "src/utils/okLab/utils.php",
+            "src/utils/okLch/conversions.php",
+            "src/utils/okLch/utils.php",
+            "src/utils/p3/conversions.php",
+            "src/utils/p3/utils.php",
+            "src/utils/proPhoto/conversions.php",
+            "src/utils/proPhoto/utils.php",
+            "src/utils/rgb/conversions.php",
+            "src/utils/rgb/utils.php",
+            "src/utils/xyzD50/conversions.php",
+            "src/utils/xyzD50/utils.php",
+            "src/utils/xyzD65/conversions.php",
+            "src/utils/xyzD65/utils.php"
+        ],
+        "psr-4": {
+            "matthieumastadenis\\couleur\\": "src/"
+        }
+    }
+}

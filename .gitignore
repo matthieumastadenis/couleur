@@ -1,0 +1,11 @@
+/.idea
+/.vscode
+/build
+/tests
+/vendor
+.DS_Store
+.env
+.php-cs-fixer.cache
+.phpunit.cache/
+.phpunit.result.cache
+Thumbs.db
