@@ -1,5 +1,12 @@
 # 🎨 Couleur: A modern PHP 8.1+ color library
 
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](https://github.com/matthieumastadenis/couleur/blob/main/LICENSE)
+[![PHP Version](https://img.shields.io/packagist/php-v/matthieumastadenis/couleur?style=flat)](https://packagist.org/packages/matthieumastadenis/couleur)
+[![Lines of Code](https://img.shields.io/tokei/lines/github/matthieumastadenis/couleur?style=flat)](https://github.com/matthieumastadenis/couleur)
+[![Release date](https://img.shields.io/github/release-date-pre/matthieumastadenis/couleur.svg?style=flat)](https://github.com/matthieumastadenis/couleur)
+[![Last commit on main branch](https://img.shields.io/github/last-commit/matthieumastadenis/couleur/main.svg?style=flat)](https://github.com/matthieumastadenis/couleur)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/matthieumastadenis/couleur.svg?style=flat)](https://packagist.org/packages/matthieumastadenis/couleur)
+
 - [🎨 Couleur: A modern PHP 8.1+ color library](#-couleur-a-modern-php-81-color-library)
   - [👋 Presentation](#-presentation)
   - [⚙️ Installation](#️-installation)
@@ -456,7 +463,7 @@ echo $hsl7; // hsl(150deg 0% 10% / 32%)
 ```
 
 > **Note**:
-> The `change()` method of the `HexRgb` class behave differently depending on the operation you asks for :
+> The `change()` method of the `HexRgb` class behave differently depending on the operation you ask for :
 >
 > - For replacing a coordinate you have to provide an **hexadecimal value** ;
 > - For additions and substractions you have to provide an **hexadecimal value** ;
@@ -1264,7 +1271,7 @@ CssColor::red->toRgb();
 In **Couleur**, the `Css` color space refers to the  **named colors** according to the [CSS specification](https://drafts.csswg.org/css-color-4/#named-colors). Because they are a predefined and standardized list of exact colors, they all can be accessed easily with [the CssColor Enum](#the-csscolor-enum).
 
 > **Note** :
-> `Css` colors **can not** have an opacity value. If you want to apply transparency to a `Css` color, you first **have to** convert it into another color space. In the same way, if you convert a color with transparency into its `Css` equivalent, it will **lose** the transparency.
+> `Css` colors **cannot** have an opacity value. If you want to apply transparency to a `Css` color, you first **have to** convert it into another color space. In the same way, if you convert a color with transparency into its `Css` equivalent, it will **lose** the transparency.
 
 - **ColorSpace enum case** : `ColorSpace::Css` ;
 - **Color class** : `matthieumastadenis\couleur\colors\Css` ;

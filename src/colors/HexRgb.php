@@ -67,7 +67,7 @@ implements ColorInterface {
     
     public function stringify(
         bool|null $alpha     = null,
-        bool|null $short     = null,
+        bool      $short     = true,
         bool|null $uppercase = null,
         bool      $sharp     = true,
     ) :string {        
