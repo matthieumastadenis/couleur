@@ -72,10 +72,10 @@ function toLab(
         (1.0 - 0.3457 - 0.3585) / 0.3585,
     ];
 
-	$a = 216/24389;
-	$b = 24389/27;
+    $a = 216/24389;
+    $b = 24389/27;
 
-	$xyz = \array_map(
+    $xyz = \array_map(
         fn ($k, $v) => $v / $d50[$k],
         \array_keys($xyz),
         \array_values($xyz),
@@ -89,12 +89,12 @@ function toLab(
         $xyz,
     );
 
-	return [
-		(116 * $f[1]) - 16,
-		 500 * ($f[0] - $f[1]),
-		 200 * ($f[1] - $f[2]),
+    return [
+        (116 * $f[1]) - 16,
+         500 * ($f[0] - $f[1]),
+         200 * ($f[1] - $f[2]),
          $opacity * 100,
-	];
+    ];
 }
 
 function toLch(

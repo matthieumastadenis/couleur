@@ -510,18 +510,18 @@ function multiplyMatrices(
 ) :array {
     $m = count($a);
 
-	if (!\is_array($a[0] ?? null)) {
-		// $a is vector, convert to [[a, b, c, ...]]
-		$a = [ $a ];
-	}
+    if (!\is_array($a[0] ?? null)) {
+        // $a is vector, convert to [[a, b, c, ...]]
+        $a = [ $a ];
+    }
 
-	if (!\is_array($b[0])) {
-		// $b is vector, convert to [[a], [b], [c], ...]]
+    if (!\is_array($b[0])) {
+        // $b is vector, convert to [[a], [b], [c], ...]]
         $b = \array_map(
             callback : fn ($v) => [ $v ],
             array    : $b,
         );
-	}
+    }
 
     $p = count($b[0]);
 
@@ -553,20 +553,20 @@ function multiplyMatrices(
         array : $a,
     );
 
-	if ($m === 1) {
+    if ($m === 1) {
         // Avoid [[a, b, c, ...]]:
-		$product = $product[0];
-	}
+        $product = $product[0];
+    }
 
-	if ($p === 1) {
+    if ($p === 1) {
         // Avoid [[a], [b], [c], ...]]:
         return \array_map(
             callback : fn ($v) => $v[0],
             array    : $product,
         );
-	}
+    }
 
-	return $product;
+    return $product;
 }
 
 /**

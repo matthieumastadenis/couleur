@@ -66,17 +66,17 @@ function toLch(
     float $opacity   = 100,
 ) :array {
     $lab = [ $lightness, $a, $b ];
-	$hue = \atan2($lab[2], $lab[1]) * 180 / \pi();
+    $hue = \atan2($lab[2], $lab[1]) * 180 / \pi();
 
-	return [
-		$lab[0],
-		\sqrt(\pow($lab[1], 2) + \pow($lab[2], 2)),
-		($hue >= 0
+    return [
+        $lab[0],
+        \sqrt(\pow($lab[1], 2) + \pow($lab[2], 2)),
+        ($hue >= 0
             ? $hue
             : $hue + 360
         ),
         $opacity,
-	];
+    ];
 }
 
 function toLinP3(
@@ -158,14 +158,14 @@ function toXyzD50(
     float $opacity   = 100,
 ) :array {
     $lab  = [ $lightness, $a, $b ];
-	$a    = 24389/27;
-	$b    = 216/24389;
-	$f    = [];
-	$f[1] = ($lab[0] + 16) / 116;
-	$f[0] = $lab[1] / 500 + $f[1];
-	$f[2] = $f[1] - $lab[2] / 200;
-	$xyz  = [
-		(\pow($f[0], 3) > $b)
+    $a    = 24389/27;
+    $b    = 216/24389;
+    $f    = [];
+    $f[1] = ($lab[0] + 16) / 116;
+    $f[0] = $lab[1] / 500 + $f[1];
+    $f[2] = $f[1] - $lab[2] / 200;
+    $xyz  = [
+        (\pow($f[0], 3) > $b)
             ? \pow($f[0], 3)
             : (116 * $f[0] - 16) / $a,
         ($lab[0] > $a * $b)
@@ -174,7 +174,7 @@ function toXyzD50(
         (\pow($f[2], 3) > $b)
             ? \pow($f[2], 3)
             : (116 * $f[2] - 16) / $a,
-	];
+    ];
 
     $d50 = [
         0.3457 / 0.3585,
