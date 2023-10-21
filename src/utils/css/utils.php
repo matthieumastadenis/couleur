@@ -11,7 +11,7 @@ use       matthieumastadenis\couleur\utils;
  *
  * @param  mixed    $value
  * @param  boolean  $throw
- * 
+ *
  * @return CssColor
  */
 function clean(
@@ -35,11 +35,11 @@ function from(
     bool|null                          $throw    = null,
 ) :array {
     return utils\to(
-        value    : $value, 
-        to       : ColorSpace::Css, 
-        from     : $from,  
-        fallback : $fallback, 
-        throw    : $throw, 
+        value    : $value,
+        to       : ColorSpace::Css,
+        from     : $from,
+        fallback : $fallback,
+        throw    : $throw,
     );
 }
 
@@ -58,7 +58,7 @@ function verify(
     return ($value instanceof CssColor)
         || (\is_string($value) && CssColor::exists($value))
         || (\is_array($value)
-            && (\count($value) === 1) 
+            && (\count($value) === 1)
             && (($value[0] instanceof CssColor) || (
                 \is_string($value[0] ?? null)
                 && CssColor::exists($value[0])

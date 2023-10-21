@@ -71,8 +71,8 @@ function toLch(
 	return [
 		$lab[0],
 		\sqrt(\pow($lab[1], 2) + \pow($lab[2], 2)),
-		($hue >= 0 
-            ? $hue 
+		($hue >= 0
+            ? $hue
             : $hue + 360
         ),
         $opacity,
@@ -177,11 +177,11 @@ function toXyzD50(
 	];
 
     $d50 = [
-        0.3457 / 0.3585, 
-        1.00000, 
+        0.3457 / 0.3585,
+        1.00000,
         (1.0 - 0.3457 - 0.3585) / 0.3585,
     ];
-    
+
     return utils\push(
         value : (float) ($opacity / 100),
         array : \array_map(

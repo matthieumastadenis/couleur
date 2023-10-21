@@ -5,10 +5,10 @@ namespace matthieumastadenis\couleur\tests;
 use       matthieumastadenis\couleur\CssColor;
 use       PHPUnit\Framework\TestCase;
 
-class   CssColorTest 
+class   CssColorTest
 extends TestCase {
 
-    const COLORS = [        
+    const COLORS = [
         'lightpink' => [
             'case'   => CssColor::lightpink,
             'hexRgb' => [ 'FF', 'B6', 'C1' ],

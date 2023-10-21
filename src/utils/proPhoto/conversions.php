@@ -103,7 +103,7 @@ function toLinProPhoto(
                 $sign = ($v < 0)
                     ? -1
                     : 1;
-    
+
                 return ($abs <= $et)
                     ? $v / 16
                     : $sign * \pow($abs, 1.8)

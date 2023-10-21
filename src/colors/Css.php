@@ -13,17 +13,17 @@ extends    Color
 implements ColorInterface {
 
     /* #region Constructor */
-    
+
     public function __construct(
         public readonly CssColor|\Stringable|string $color,
     ) {
-        
+
     }
 
     /* #endregion */
-    
+
     /* #region Public Static Methods */
-    
+
     public static function aliases(
 
     ) :array {
@@ -55,8 +55,8 @@ implements ColorInterface {
 
     ) :string {
         return utils\css\stringify($this->color);
-    } 
+    }
 
     /* #endregion */
-        
-} 
+
+}

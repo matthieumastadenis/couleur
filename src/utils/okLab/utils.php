@@ -38,11 +38,11 @@ function from(
     bool|null                          $throw    = null,
 ) :array {
     return utils\to(
-        value    : $value, 
-        to       : ColorSpace::OkLab, 
-        from     : $from, 
-        fallback : $fallback, 
-        throw    : $throw, 
+        value    : $value,
+        to       : ColorSpace::OkLab,
+        from     : $from,
+        fallback : $fallback,
+        throw    : $throw,
     );
 }
 

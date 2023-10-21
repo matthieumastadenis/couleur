@@ -21,12 +21,12 @@ use       matthieumastadenis\couleur\colors\XyzD50;
 use       matthieumastadenis\couleur\colors\XyzD65;
 
 /**
- * An immutable object representing a color expressed in a precise and supported color space. 
- * 
+ * An immutable object representing a color expressed in a precise and supported color space.
+ *
  * It can be converted to another supported color space using one of the to...() methods.
- * Variant instances can be created with the change() method. 
- * 
- * This class is abstract so it can not be instanciated directly. 
+ * Variant instances can be created with the change() method.
+ *
+ * This class is abstract so it can not be instanciated directly.
  * It is inherited by all classes in the matthieumastadenis\couleur\colors namespace.
  */
 abstract class Color {
@@ -47,7 +47,7 @@ abstract class Color {
 
     /* #endregion */
 
-    /* #region Public Static Methods */    
+    /* #region Public Static Methods */
 
     /**
      * Returns the ColorSpace instance corresponding to the current color.
@@ -62,7 +62,7 @@ abstract class Color {
 
     /* #endregion */
 
-    /* #region Public Methods */    
+    /* #region Public Methods */
 
     /**
      * Returns an array containing all coordinates of the current color.
@@ -85,15 +85,15 @@ abstract class Color {
 
     ) :string {
         return \implode(', ', $this->coordinates());
-    } 
-        
+    }
+
     /**
      * Returns a new ColorInterface instance corresponding to the current color converted into the $to color space.
      *
      * @param  ColorSpace|\Stringable|string|null $to       The desired output color space (can be an instance of the ColorSpace enum or a stringable alias)
      * @param  ColorInterface|null                $fallback A ColorInterface instance used as a fallback in case of failure
      * @param  boolean|null                       $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return ColorInterface                               The converted color object
      */
     public function to(
@@ -115,7 +115,7 @@ abstract class Color {
      *
      * @param  Css|null     $fallback A colors\Css instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return Css                    The converted color object
      */
     public function toCss(
@@ -134,7 +134,7 @@ abstract class Color {
      *
      * @param  HexRgb|null  $fallback A colors\HexRgb instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return HexRgb                 The converted color object
      */
     public function toHexRgb(
@@ -153,7 +153,7 @@ abstract class Color {
      *
      * @param  Hsl|null     $fallback A colors\Hsl instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return Hsl                    The converted color object
      */
     public function toHsl(
@@ -172,7 +172,7 @@ abstract class Color {
      *
      * @param  Hsv|null     $fallback A colors\Hsv instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return Hsv                    The converted color object
      */
     public function toHsv(
@@ -191,7 +191,7 @@ abstract class Color {
      *
      * @param  Hwb|null     $fallback A colors\Hwb instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return Hwb                    The converted color object
      */
     public function toHwb(
@@ -210,7 +210,7 @@ abstract class Color {
      *
      * @param  Lab|null     $fallback A colors\Lab instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return Lab                    The converted color object
      */
     public function toLab(
@@ -229,7 +229,7 @@ abstract class Color {
      *
      * @param  Lch|null     $fallback A colors\Lch instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return Lch                    The converted color object
      */
     public function toLch(
@@ -248,7 +248,7 @@ abstract class Color {
      *
      * @param  LinP3|null   $fallback A colors\LinP3 instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return LinP3                  The converted color object
      */
     public function toLinP3(
@@ -267,7 +267,7 @@ abstract class Color {
      *
      * @param  LinProPhoto|null $fallback A colors\LinProPhoto instance used as a fallback in case of failure
      * @param  boolean|null     $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return LinProPhoto                The converted color object
      */
     public function toLinProPhoto(
@@ -286,7 +286,7 @@ abstract class Color {
      *
      * @param  LinRgb|null  $fallback A colors\LinRgb instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return LinRgb                 The converted color object
      */
     public function toLinRgb(
@@ -305,7 +305,7 @@ abstract class Color {
      *
      * @param  OkLab|null   $fallback A colors\OkLab instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return OkLab                  The converted color object
      */
     public function toOkLab(
@@ -324,7 +324,7 @@ abstract class Color {
      *
      * @param  OkLch|null   $fallback A colors\OkLch instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return OkLch                  The converted color object
      */
     public function toOkLch(
@@ -343,7 +343,7 @@ abstract class Color {
      *
      * @param  P3|null      $fallback A colors\P3 instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return P3                     The converted color object
      */
     public function toP3(
@@ -362,7 +362,7 @@ abstract class Color {
      *
      * @param  ProPhoto|null $fallback A colors\ProPhoto instance used as a fallback in case of failure
      * @param  boolean|null  $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return ProPhoto                The converted color object
      */
     public function toProPhoto(
@@ -381,7 +381,7 @@ abstract class Color {
      *
      * @param  Rgb|null     $fallback A colors\Rgb instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return Rgb                    The converted color object
      */
     public function toRgb(
@@ -400,7 +400,7 @@ abstract class Color {
      *
      * @param  XyzD50|null  $fallback A colors\XyzD50 instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return XyzD50                 The converted color object
      */
     public function toXyzD50(
@@ -419,7 +419,7 @@ abstract class Color {
      *
      * @param  XyzD65|null  $fallback A colors\XyzD65 instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return XyzD65                 The converted color object
      */
     public function toXyzD65(
@@ -434,5 +434,5 @@ abstract class Color {
     }
 
     /* #endregion */
-    
+
 }

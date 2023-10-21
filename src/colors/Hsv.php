@@ -25,7 +25,7 @@ implements ColorInterface {
     /* #endregion */
 
     /* #region Public Static Methods */
-    
+
     public static function aliases(
 
     ) :array {
@@ -36,7 +36,7 @@ implements ColorInterface {
     }
 
     /* #endregion */
-    
+
     /* #region Public Methods */
 
     public function change(
@@ -60,8 +60,8 @@ implements ColorInterface {
             fallback : $fallback,
             throw    : $throw,
         );
-    } 
-    
+    }
+
     public function stringify(
         bool|null $legacy    = null,
         bool|null $alpha     = null,

@@ -5,14 +5,14 @@ namespace matthieumastadenis\couleur\tests\utils\hexRgb;
 use       matthieumastadenis\couleur\utils\hexRgb;
 use       PHPUnit\Framework\TestCase;
 
-class   StringifyTest 
+class   StringifyTest
 extends TestCase {
 
     const LOOPS = 30;
-    const CHARS = [ 
-        '0', '1', '2', '3', 
-        '4', '5', '6', '7', 
-        '8', '9', 'A', 'B', 
+    const CHARS = [
+        '0', '1', '2', '3',
+        '4', '5', '6', '7',
+        '8', '9', 'A', 'B',
         'C', 'D', 'E', 'F',
     ];
 
@@ -366,7 +366,7 @@ extends TestCase {
                 $g1   = \strtolower($g1);
                 $b1   = \strtolower($b1);
             }
-            
+
             $hex = hexRgb\stringify($r1, $g1, $b1, uppercase : false);
 
             $this->assertSame(

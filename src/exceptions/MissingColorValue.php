@@ -2,12 +2,12 @@
 
 namespace matthieumastadenis\couleur\exceptions;
 
-class   MissingColorValue 
+class   MissingColorValue
 extends \Exception {
 
     public function __construct(
         string          $name,
-        int             $code     = 0, 
+        int             $code     = 0,
         \Throwable|null $previous = null,
     ) {
         parent::__construct(

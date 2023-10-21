@@ -23,9 +23,9 @@ implements ColorInterface {
     }
 
     /* #endregion */
-    
+
     /* #region Public Static Methods */
-    
+
     public static function aliases(
 
     ) :array {
@@ -37,10 +37,10 @@ implements ColorInterface {
             's_rgb',
         ];
     }
-    
+
     /* #endregion */
-    
-    /* #region Public Methods */ 
+
+    /* #region Public Methods */
 
     public function change(
         \Stringable|string|int|float|null $red       = null,
@@ -63,8 +63,8 @@ implements ColorInterface {
             fallback : $fallback,
             throw    : $throw,
         );
-    } 
-    
+    }
+
     public function stringify(
         bool|null $legacy    = null,
         bool|null $alpha     = null,
@@ -82,5 +82,5 @@ implements ColorInterface {
     }
 
     /* #endregion */
-    
+
 }

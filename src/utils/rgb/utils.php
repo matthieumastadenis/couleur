@@ -38,11 +38,11 @@ function from(
     bool|null                          $throw    = null,
 ) :array {
     return utils\to(
-        value    : $value, 
-        to       : ColorSpace::Rgb, 
-        from     : $from, 
-        fallback : $fallback, 
-        throw    : $throw, 
+        value    : $value,
+        to       : ColorSpace::Rgb,
+        from     : $from,
+        fallback : $fallback,
+        throw    : $throw,
     );
 }
 
@@ -110,7 +110,7 @@ function verify(
 ) :bool {
     return utils\isColorString($value, ColorSpace::Rgb)
         || utils\validateArray(
-            value  : $value, 
+            value  : $value,
             filter : fn ($v) => !\is_object($v) && ((int) $v >= 0) && ((int) $v <= 255)
         )
     ;
