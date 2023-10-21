@@ -76,8 +76,8 @@ function stringify(
         .$hUnit
         .$s1
         .\round($whiteness, $precision)
-        .$s1
         .$wbUnit
+        .$s1
         .\round($blackness, $precision)
         .$wbUnit
     ;
