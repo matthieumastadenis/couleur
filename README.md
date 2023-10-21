@@ -1285,7 +1285,7 @@ In **Couleur**, the `Css` color space refers to the  **named colors** according 
 - **Dedicated functions** namespace : `matthieumastadenis\couleur\utils\hexRgb` ;
 - **Accepted aliases** : `hex`, `hexrgb`, `hex-rgb`, `hex_rgb`, `hexadecimal` ;
 - **Coordinates** : `red`, `green`, `blue` ;
-  
+
 ### HSL
 
 - **ColorSpace** case: `ColorSpace::Hsl` ;
@@ -1293,7 +1293,7 @@ In **Couleur**, the `Css` color space refers to the  **named colors** according 
 - **Dedicated functions** namespace : `matthieumastadenis\couleur\utils\hsl` ;
 - **Accepted aliases** : `hsl`, `hsla` ;
 - **Coordinates** : `hue`, `saturation`, `lightness` ;
-  
+
 ### HSV
 
 - **ColorSpace** case: `ColorSpace::Hsv` ;
@@ -1301,7 +1301,7 @@ In **Couleur**, the `Css` color space refers to the  **named colors** according 
 - **Dedicated functions** namespace : `matthieumastadenis\couleur\utils\hsv` ;
 - **Accepted aliases** : `hsv`, `hsb` ;
 - **Coordinates** : `hue`, `saturation`, `value` ;
-  
+
 ### HWB
 
 - **ColorSpace** case: `ColorSpace::Hwb` ;

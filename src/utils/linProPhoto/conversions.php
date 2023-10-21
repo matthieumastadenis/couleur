@@ -173,8 +173,8 @@ function toXyzD50(
                 [ 0.0,                 0.0,                  0.8251046025104601     ],
             ],
             b : [
-                $red, 
-                $green, 
+                $red,
+                $green,
                 $blue,
             ],
         ),

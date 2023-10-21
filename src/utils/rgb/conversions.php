@@ -21,8 +21,8 @@ function toCss(
     float $opacity = 255,
 ) :CssColor {
     return CssColor::fromRgb(
-        (int) \round($red), 
-        (int) \round($green), 
+        (int) \round($red),
+        (int) \round($green),
         (int) \round($blue),
     );
 }
@@ -55,9 +55,9 @@ function toHsl(
     $lightness = ($max + $min) / 2;
 
     if ($max == $min) {
-        $hue        = 
+        $hue        =
         $saturation = 0;
-    } 
+    }
     else {
         $d          = $max - $min;
         $saturation = ($lightness > 0.5)
@@ -81,8 +81,8 @@ function toHsl(
     }
 
     return [
-        (float) $hue        * 360, 
-        (float) $saturation * 100, 
+        (float) $hue        * 360,
+        (float) $saturation * 100,
         (float) $lightness  * 100,
         (float) $opacity    / 2.55,
     ];
@@ -221,6 +221,6 @@ function toXyzD65(
     float $green   = 0,
     float $blue    = 0,
     float $opacity = 255,
-) :array {    
+) :array {
     return linRgb\toXyzD65(... toLinRgb($red, $green, $blue, $opacity));
 }

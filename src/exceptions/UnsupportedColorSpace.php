@@ -2,12 +2,12 @@
 
 namespace matthieumastadenis\couleur\exceptions;
 
-class   UnsupportedColorSpace 
+class   UnsupportedColorSpace
 extends \Exception {
 
     public function __construct(
-        string          $space, 
-        int             $code     = 0, 
+        string          $space,
+        int             $code     = 0,
         \Throwable|null $previous = null,
     ) {
         parent::__construct(

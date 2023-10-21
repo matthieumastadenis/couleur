@@ -23,9 +23,9 @@ implements ColorInterface {
     }
 
     /* #endregion */
-    
-    /* #region Public Static Methods */    
-    
+
+    /* #region Public Static Methods */
+
     public static function aliases(
 
     ) :array {
@@ -39,7 +39,7 @@ implements ColorInterface {
     }
 
     /* #endregion */
-    
+
     /* #region Public Methods */
 
     public function change(
@@ -63,14 +63,14 @@ implements ColorInterface {
             fallback : $fallback,
             throw    : $throw,
         );
-    } 
-    
+    }
+
     public function stringify(
         bool|null $alpha     = null,
         bool      $short     = true,
         bool|null $uppercase = null,
         bool      $sharp     = true,
-    ) :string {        
+    ) :string {
         return utils\hexRgb\stringify(
             red       : $this->red,
             green     : $this->green,
@@ -84,5 +84,5 @@ implements ColorInterface {
     }
 
     /* #endregion */
-    
+
 }

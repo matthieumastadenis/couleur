@@ -21,15 +21,15 @@ use       matthieumastadenis\couleur\colors\XyzD50;
 use       matthieumastadenis\couleur\colors\XyzD65;
 
 /**
- * An immutable object representing a color expressed in a precise and supported color space. 
- * 
+ * An immutable object representing a color expressed in a precise and supported color space.
+ *
  * It can be converted to another supported color space using one of the to...() methods.
- * Variant instances can be created with the change() method. 
- * 
+ * Variant instances can be created with the change() method.
+ *
  */
 interface ColorInterface
 extends   \Stringable {
-    
+
     /* #region Magic Methods */
 
     /**
@@ -45,7 +45,7 @@ extends   \Stringable {
     /* #endregion */
 
     /* #region Public Static Methods */
-    
+
     /**
      * Returns an array containing all supported aliases for the ColorSpace of the current color.
      *
@@ -71,7 +71,7 @@ extends   \Stringable {
     /**
      * Returns a new ColorInterface instance of the same class, with modified coordinates.
      * Each implementation of this method may add its own parameters, depending on the corresponding color space.
-     * 
+     *
      * @return ColorInterface
      */
     public function change(
@@ -96,14 +96,14 @@ extends   \Stringable {
     public function stringify(
 
     ) :string;
-    
+
     /**
      * Returns a new ColorInterface instance corresponding to the current color converted into the $to color space.
      *
      * @param  ColorSpace|\Stringable|string|null $to       The desired output color space (can be an instance of the ColorSpace enum or a stringable alias)
      * @param  ColorInterface|null                $fallback A ColorInterface instance used as a fallback in case of failure
      * @param  boolean|null                       $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return ColorInterface                               The converted color object
      */
     public function to(
@@ -117,7 +117,7 @@ extends   \Stringable {
      *
      * @param  Css|null     $fallback A colors\Css instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return Css                    The converted color object
      */
     public function toCss(
@@ -130,7 +130,7 @@ extends   \Stringable {
      *
      * @param  HexRgb|null  $fallback A colors\HexRgb instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return HexRgb                 The converted color object
      */
     public function toHexRgb(
@@ -143,7 +143,7 @@ extends   \Stringable {
      *
      * @param  Hsl|null     $fallback A colors\Hsl instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return Hsl                    The converted color object
      */
     public function toHsl(
@@ -156,7 +156,7 @@ extends   \Stringable {
      *
      * @param  Hsv|null     $fallback A colors\Hsv instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return Hsv                    The converted color object
      */
     public function toHsv(
@@ -169,7 +169,7 @@ extends   \Stringable {
      *
      * @param  Hwb|null     $fallback A colors\Hwb instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return Hwb                    The converted color object
      */
     public function toHwb(
@@ -182,7 +182,7 @@ extends   \Stringable {
      *
      * @param  Lab|null     $fallback A colors\Lab instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return Lab                    The converted color object
      */
     public function toLab(
@@ -195,7 +195,7 @@ extends   \Stringable {
      *
      * @param  Lch|null     $fallback A colors\Lch instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return Lch                    The converted color object
      */
     public function toLch(
@@ -208,7 +208,7 @@ extends   \Stringable {
      *
      * @param  LinP3|null   $fallback A colors\LinP3 instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return LinP3                  The converted color object
      */
     public function toLinP3(
@@ -221,7 +221,7 @@ extends   \Stringable {
      *
      * @param  LinProPhoto|null $fallback A colors\LinProPhoto instance used as a fallback in case of failure
      * @param  boolean|null     $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return LinProPhoto                The converted color object
      */
     public function toLinProPhoto(
@@ -234,7 +234,7 @@ extends   \Stringable {
      *
      * @param  LinRgb|null  $fallback A colors\LinRgb instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return LinRgb                 The converted color object
      */
     public function toLinRgb(
@@ -247,7 +247,7 @@ extends   \Stringable {
      *
      * @param  OkLab|null   $fallback A colors\OkLab instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return OkLab                  The converted color object
      */
     public function toOkLab(
@@ -260,7 +260,7 @@ extends   \Stringable {
      *
      * @param  OkLch|null   $fallback A colors\OkLch instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return OkLch                  The converted color object
      */
     public function toOkLch(
@@ -273,7 +273,7 @@ extends   \Stringable {
      *
      * @param  P3|null      $fallback A colors\P3 instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return P3                     The converted color object
      */
     public function toP3(
@@ -286,7 +286,7 @@ extends   \Stringable {
      *
      * @param  ProPhoto|null $fallback A colors\ProPhoto instance used as a fallback in case of failure
      * @param  boolean|null  $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return ProPhoto                The converted color object
      */
     public function toProPhoto(
@@ -299,7 +299,7 @@ extends   \Stringable {
      *
      * @param  Rgb|null     $fallback A colors\Rgb instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return Rgb                    The converted color object
      */
     public function toRgb(
@@ -312,7 +312,7 @@ extends   \Stringable {
      *
      * @param  XyzD50|null  $fallback A colors\XyzD50 instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return XyzD50                 The converted color object
      */
     public function toXyzD50(
@@ -325,7 +325,7 @@ extends   \Stringable {
      *
      * @param  XyzD65|null  $fallback A colors\XyzD65 instance used as a fallback in case of failure
      * @param  boolean|null $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return XyzD65                 The converted color object
      */
     public function toXyzD65(

@@ -44,7 +44,7 @@ function toHsv(
         ? 0
         : 200 * (1 - $lightness / $value)
     ;
-    
+
     return [
         $hue,
         $saturation,
@@ -155,7 +155,7 @@ function toRgb(
     if ($hue < 0) {
         $hue = 6 - \fmod(-$hue, 6);
     }
-    
+
     $hue        = \fmod($hue, 6);
     $saturation = \max(0, \min(1, $saturation / 100));
     $lightness  = \max(0, \min(1, $lightness / 100));
@@ -166,27 +166,27 @@ function toRgb(
         $red   = $c;
         $green = $x;
         $blue  = 0;
-    } 
+    }
     else if ($hue < 2) {
         $red   = $x;
         $green = $c;
         $blue  = 0;
-    } 
+    }
     else if ($hue < 3) {
         $red   = 0;
         $green = $c;
         $blue  = $x;
-    } 
+    }
     else if ($hue < 4) {
         $red   = 0;
         $green = $x;
         $blue  = $c;
-    } 
+    }
     else if ($hue < 5) {
         $red   = $x;
         $green = 0;
         $blue  = $c;
-    } 
+    }
     else {
         $red   = $c;
         $green = 0;

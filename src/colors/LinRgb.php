@@ -25,7 +25,7 @@ implements ColorInterface {
     /* #endregion */
 
     /* #region Public Static Methods */
-    
+
     public static function aliases(
 
     ) :array {
@@ -33,15 +33,15 @@ implements ColorInterface {
             'srgb-linear',
             'linrgb',
             'lin-rgb',
-            'lin_rgb',            
+            'lin_rgb',
             'linsrgb',
             'lin-srgb',
-            'lin_srgb',            
+            'lin_srgb',
         ];
     }
 
     /* #endregion */
-    
+
     /* #region Public Methods */
 
     public function change(
@@ -65,8 +65,8 @@ implements ColorInterface {
             fallback : $fallback,
             throw    : $throw,
         );
-    } 
-    
+    }
+
     public function stringify(
         bool|null $legacy    = null,
         bool|null $alpha     = null,

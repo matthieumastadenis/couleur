@@ -111,11 +111,11 @@ function toOkLab(
     float $opacity   = 100,
 ) :array {
     return [
-		$lightness,
-		$chroma * \cos($hue * \pi() / 180),
-		$chroma * \sin($hue * \pi() / 180),
+        $lightness,
+        $chroma * \cos($hue * \pi() / 180),
+        $chroma * \sin($hue * \pi() / 180),
         $opacity,
-	];
+    ];
 }
 
 function toP3(

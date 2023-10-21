@@ -2,12 +2,12 @@
 
 namespace matthieumastadenis\couleur\exceptions;
 
-class   UnknownColorSpace 
+class   UnknownColorSpace
 extends \Exception {
 
     public function __construct(
         string|null     $space    = null,
-        int             $code     = 0, 
+        int             $code     = 0,
         \Throwable|null $previous = null,
     ) {
         parent::__construct(

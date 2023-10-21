@@ -65,12 +65,12 @@ function toLab(
     float $hue       = 0,
     float $opacity   = 100,
 ) :array {
-	return [
-		$lightness,
-		$chroma * \cos($hue * \pi() / 180),
-		$chroma * \sin($hue * \pi() / 180),
+    return [
+        $lightness,
+        $chroma * \cos($hue * \pi() / 180),
+        $chroma * \sin($hue * \pi() / 180),
         $opacity,
-	];
+    ];
 }
 
 function toLinP3(

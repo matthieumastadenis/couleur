@@ -8,14 +8,14 @@ use       matthieumastadenis\couleur\exceptions\UnknownColorSpace;
 use       matthieumastadenis\couleur\exceptions\UnsupportedCoordinateModifier;
 
 /**
- * Add leading zero to $value if it is a stringable value starting with a dot. 
- * This function is useful for converting CSS opacity shortcuts to proper boolean 
+ * Add leading zero to $value if it is a stringable value starting with a dot.
+ * This function is useful for converting CSS opacity shortcuts to proper boolean
  * numbers: '.5' is converted to '0.5'.
- * If $value is not stringable or does not start with a dot, it is returned without 
+ * If $value is not stringable or does not start with a dot, it is returned without
  * any change.
  *
  * @param  \Stringable|string|integer|float $value The value to transform
- * 
+ *
  * @return \Stringable|string|integer|float        The transformed or unchanged value
  */
 function addLeadingZero(
@@ -29,18 +29,18 @@ function addLeadingZero(
 
 /**
  * Returns the $value coordinate replaced or updated by $new.
- * 
+ *
  * If $new is null, $value will be returned.
  * If $new is a simple stringable or number, it will simply be returned instead of $value.
  * If $new is a string starting with a modifier character (+, -, *, /, %) or ending with a percentage character (%), $value will be modified then returned.
- * 
+ *
  * Examples: changeCoordinate(50, '+5')   returns 55 ;
  *           changeCoordinate(50, '-5')   returns 45 ;
  *           changeCoordinate(50, '*2')   returns 100 ;
  *           changeCoordinate(50, '/2')   returns 25 ;
  *           changeCoordinate(50, '%6')   returns 2 ;
  *           changeCoordinate(50, '10%')  returns 5 ;
- *           changeCoordinate(50, '+10%') returns 55 ; 
+ *           changeCoordinate(50, '+10%') returns 55 ;
  *           changeCoordinate(50, '-10%') returns 45 ;
  *           changeCoordinate(50, '*10%') returns 250 ;
  *           changeCoordinate(50, '/10%') returns 10 ;
@@ -50,7 +50,7 @@ function addLeadingZero(
  * @param  \Stringable|string|integer|float|null $new   Either a new value which will be returned instead of the original $value, or a modifier string which will be used to update $value
  * @param  boolean                               $hex   If true $value and $new will be considered as strings containing hexadecimal numbers
  * @param  boolean                               $throw If false the function will not throw exceptions
- * 
+ *
  * @return \Stringable|string|integer|float
  */
 function changeCoordinate(
@@ -109,7 +109,7 @@ function changeCoordinate(
             ? throw new UnsupportedCoordinateModifier($modifier)
             : $original,
     };
-    
+
     return $hex
         ? decToHex(\round($result))
         : $result
@@ -117,31 +117,31 @@ function changeCoordinate(
 }
 
 /**
- * Clean a single color coordinate. 
- * 
- * The purpose of this function is to transform any coordinate that is part of a color 
+ * Clean a single color coordinate.
+ *
+ * The purpose of this function is to transform any coordinate that is part of a color
  * to a proper float number in the expected range.
- * 
- * By default, it uses 0 as the $min value and 100 as the $max value, so if you call 
- * the function with '150' or 150 the result will be (float) 100, and if you call the 
- * function with '-150' or -150 the result will be (float) 0. You can define both 
+ *
+ * By default, it uses 0 as the $min value and 100 as the $max value, so if you call
+ * the function with '150' or 150 the result will be (float) 100, and if you call the
+ * function with '-150' or -150 the result will be (float) 0. You can define both
  * $min and $max to null if you want an unbounded result.
- * 
- * Percentages are automatically converted using $max value. For example, if you call 
+ *
+ * Percentages are automatically converted using $max value. For example, if you call
  * the function with $max=255 and with a $value of '50%' the result will be (float) 127.5.
- * 
- * If you set $round to true, the value will be rounded with $precision decimals. The 
+ *
+ * If you set $round to true, the value will be rounded with $precision decimals. The
  * $precision can not exceed \ini_get('precision'), and will be considered as 0 by default.
  *
  * @param \Stringable|string|integer|float $value     The stringable or number to clean
  * @param integer                          $min       Minimum allowed value (can be null to unbound)
  * @param integer                          $max       Maximum allowed value (can be null to unbound)
- * @param boolean                          $loop      
+ * @param boolean                          $loop
  * @param integer|null                     $precision Used to round the value
  * @param boolean                          $round     If true the value will be rounded
  * @param \Stringable|string|null          $padLeft
  * @param integer|null                     $length
- * 
+ *
  * @return float
  */
 function cleanCoordinate(
@@ -174,7 +174,7 @@ function cleanCoordinate(
     if ($max !== null) {
         $value = \min($value, $max);
     }
-    
+
     $value = (float) $value;
 
     return ($padLeft === null)
@@ -182,21 +182,21 @@ function cleanCoordinate(
         : \str_pad(
             string     : $value,
             length     : $length ?? \strlen((string) $max),
-            pad_string : $padLeft, 
+            pad_string : $padLeft,
             pad_type   : \STR_PAD_LEFT,
         )
     ;
 }
 
 /**
- * This function transforms a potentially invalid number of decimals to a valid 
+ * This function transforms a potentially invalid number of decimals to a valid
  * number of decimals, which can be use in any rounding function.
- * 
- * It returns the minimum integer value between $precision and \ini_get('precision'). 
+ *
+ * It returns the minimum integer value between $precision and \ini_get('precision').
  * If the $precision parameter is null, it will be considered as 0.
  *
  * @param  integer|null $precision A potentially invalid number of decimals
- * 
+ *
  * @return integer                 The corresponding valid number of decimals
  */
 function cleanPrecision(
@@ -214,15 +214,15 @@ function cleanPrecision(
 /**
  * Return the value of a constant if it exists, or $value if the constant does not exists.
  * If $create is set to true, the constant will be defined with $value as a value.
- * 
- * The purpose of this function is to handle constants which are specific to the 
- * matthieumastadenis/couleur package, so it only uses uppercase constants prefixed 
+ *
+ * The purpose of this function is to handle constants which are specific to the
+ * matthieumastadenis/couleur package, so it only uses uppercase constants prefixed
  * with 'COULEUR_'. It is not made to be used with external or third-party constants.
  *
  * @param  \Stringable|string $name   The constant name (will be converted to uppercase and prefixed with 'COULEUR_')
  * @param  mixed              $value  Fallback value (also used to define the constant if $create is true)
  * @param  boolean            $create If true the constant will be defined with $value as a value
- * 
+ *
  * @return mixed                      The constant value if it exists, $value otherwise
  */
 function constant(
@@ -231,7 +231,7 @@ function constant(
     bool               $create = false,
 ) :mixed {
     $name = \strtoupper((string) $name);
-    
+
     if (!\str_starts_with($name, 'COULEUR_')) {
         $name = "COULEUR_$name";
     }
@@ -248,20 +248,20 @@ function constant(
 }
 
 /**
- * Clean an hexadecimal value so it contains exaclty $length characters. 
+ * Clean an hexadecimal value so it contains exaclty $length characters.
  * Also converts the value to uppercase or lowercase if $uppercase is set to true or false.
- * 
- * The purpose of this function is to help converting short hexadecimal color values to their 
+ *
+ * The purpose of this function is to help converting short hexadecimal color values to their
  * longer form, like #f00 to #ff0000. It should be called separately for red, green and blue.
- * 
+ *
  * If $value is 'f' and $length is 2, the result will be 'ff'.
  *
  * @param  \Stringable|string $value     The hexadecimal string to clean
  * @param  integer            $length    The minimum length expected
- * @param  boolean|null       $uppercase If true $value will be converted to uppercase, 
+ * @param  boolean|null       $uppercase If true $value will be converted to uppercase,
  *                                       if false $value will be converted to lowercase,
  *                                       if null the case remains unchanged
- * 
+ *
  * @return string                        The cleaned hexadecimal $value
  */
 function cleanHexValue(
@@ -273,7 +273,7 @@ function cleanHexValue(
     $value  = (string) $value;
     $prefix = (string) ($prefix ?? $value);
     $l      = \strlen($value);
-    
+
     while ($l < $length) {
         $value = $prefix.$value;
         $l++;
@@ -296,7 +296,7 @@ function cleanHexValue(
  * @param  integer      $length
  * @param  boolean|null $uppercase
  * @param  integer|null $precision
- * 
+ *
  * @return string
  */
 function decToHex(
@@ -315,20 +315,20 @@ function decToHex(
 }
 
 /**
- * Attempts to guess a color space by interpreting $value. 
- * 
+ * Attempts to guess a color space by interpreting $value.
+ *
  * This fonction only works with color spaces handled by the matthieumastadenis\couleur\ColorSpace enum.
- * 
- * If $value does not correspond to any of these color spaces, a UnknownColorSpace exception will be thrown by default. 
+ *
+ * If $value does not correspond to any of these color spaces, a UnknownColorSpace exception will be thrown by default.
  * If the $throw parameter is set to false, $fallback will be returned instead.
  *
- * @param mixed           $value    A color value to analyze. Typically it should be an array like [ 255,0,0 ] or a 
+ * @param mixed           $value    A color value to analyze. Typically it should be an array like [ 255,0,0 ] or a
  *                                  stringable color expression like 'rgb(255,0,0)'.
- * @param ColorSpace|null $fallback Fallback value returned if no color space was found and no exception was thrown. 
- * @param boolean|null    $throw    If $value does not correspond to any supported color space and this parameter 
- *                                  is true, the fonction will throw a UnknownColorSpace exception. If $throw is null, 
+ * @param ColorSpace|null $fallback Fallback value returned if no color space was found and no exception was thrown.
+ * @param boolean|null    $throw    If $value does not correspond to any supported color space and this parameter
+ *                                  is true, the fonction will throw a UnknownColorSpace exception. If $throw is null,
  *                                  an exception will only be thrown if $fallback is also null.
- * 
+ *
  * @return ColorSpace|null          The ColorSpace instance corresponding to $value, $fallback otherwise
  */
 function findColorSpace(
@@ -363,16 +363,16 @@ function findColorSpace(
 
 /**
  * This function is used when converting a color value to any color space.
- * 
+ *
  * If the $from parameter is null, the function uses findColorSpace() to identify the input color space from the format of $value.
- * 
+ *
  * If the $to parameter is null, it will be the same as the specified or identified input color space.
  *
  * @param  mixed                              $value
  * @param  ColorSpace|\Stringable|string|null $to
  * @param  ColorSpace|\Stringable|string|null $from
  * @param  boolean                            $throw
- * 
+ *
  * @return array
  */
 function findFromAndTo(
@@ -398,7 +398,7 @@ function findFromAndTo(
     );
 
     return [
-        'from' => $from, 
+        'from' => $from,
         'to'   => $to
     ];
 }
@@ -423,7 +423,7 @@ function hexToDec(
  *
  * @param  mixed                         $value
  * @param  \Stringable|string|array|null $spaces
- * 
+ *
  * @return boolean
  */
 function isColorString(
@@ -444,18 +444,18 @@ function isColorString(
         if ($space === null) {
             $space = '[0-9A-Za-z]+';
         }
-    
+
         $n  = '-?[0-9\.]*((deg)|%)?';
         $s  = '[\s,]*';
         $os = '[\s,\/]*';
-        
+
         if (\preg_match(
-            pattern : "/^($space\s*\()|(color\s*\($space)$s$n$s$n$s$n$os$n\s*\)?$/", 
+            pattern : "/^($space\s*\()|(color\s*\($space)$s$n$s$n$s$n$os$n\s*\)?$/",
             subject : $value,
         )) {
             return true;
         }
-    } 
+    }
 
     return false;
 }
@@ -464,7 +464,7 @@ function isColorString(
  * Returns true if $value is an array or an instance of \Traversable, false otherwise.
  *
  * @param  mixed   $value The value to test as an iterable
- * 
+ *
  * @return boolean        True if $value is an array or an instance of \Traversable, false otherwise
  */
 function isIterable(
@@ -480,7 +480,7 @@ function isIterable(
  * Returns false otherwise.
  *
  * @param  mixed   $value The value to test as a stringable
- * 
+ *
  * @return boolean        True if $value is a string or a \Stringable object, false otherwise
  */
 function isStringable(
@@ -492,36 +492,36 @@ function isStringable(
 }
 
 /**
- * Where the magic happens. This is used by several color spaces conversion functions. 
- * 
+ * Where the magic happens. This is used by several color spaces conversion functions.
+ *
  * This function is directly inspired by the multiplyMatrices() function in color.js form Lea Verou and Chris Lilley.
  * (see https://github.com/LeaVerou/color.js/blob/main/src/multiply-matrices.js)
- * 
+ *
  * It returns an array which is the product of the two number matrices passed as parameters.
  *
  * @param  array $a m x n matrice
  * @param  array $b n x p matrice
- * 
+ *
  * @return array    m x p product
  */
 function multiplyMatrices(
-    array $a, 
+    array $a,
     array $b,
 ) :array {
     $m = count($a);
 
-	if (!\is_array($a[0] ?? null)) {
-		// $a is vector, convert to [[a, b, c, ...]]
-		$a = [ $a ];
-	}
+    if (!\is_array($a[0] ?? null)) {
+        // $a is vector, convert to [[a, b, c, ...]]
+        $a = [ $a ];
+    }
 
-	if (!\is_array($b[0])) {
-		// $b is vector, convert to [[a], [b], [c], ...]]
+    if (!\is_array($b[0])) {
+        // $b is vector, convert to [[a], [b], [c], ...]]
         $b = \array_map(
-            callback : fn ($v) => [ $v ], 
+            callback : fn ($v) => [ $v ],
             array    : $b,
         );
-	}
+    }
 
     $p = count($b[0]);
 
@@ -553,30 +553,30 @@ function multiplyMatrices(
         array : $a,
     );
 
-	if ($m === 1) {
+    if ($m === 1) {
         // Avoid [[a, b, c, ...]]:
-		$product = $product[0];
-	}
+        $product = $product[0];
+    }
 
-	if ($p === 1) {
+    if ($p === 1) {
         // Avoid [[a], [b], [c], ...]]:
         return \array_map(
             callback : fn ($v) => $v[0],
             array    : $product,
         );
-	}
+    }
 
-	return $product;
+    return $product;
 }
 
 /**
- * Parse any color value and returns an array of corresponding cleaned coordinates. 
- * 
+ * Parse any color value and returns an array of corresponding cleaned coordinates.
+ *
  * Typically $value should be an array of coordinates like [ 255,0,0 ], or a stringable color expression like 'rgb(255,0,0)'.
- * 
+ *
  * @param  mixed          $value
  * @param  int|float|null $opacityFactor
- * 
+ *
  * @return array
  */
 function parseColorValue(
@@ -590,12 +590,12 @@ function parseColorValue(
 }
 
 /**
- * Parse a stringable color expression like 'rgb(255,0,0)' and returns an array 
+ * Parse a stringable color expression like 'rgb(255,0,0)' and returns an array
  * of corresponding cleaned coordinates, like [ 255,0,0,255 ].
- * 
+ *
  * @param  \Stringable|string $value
  * @param  int|float|null     $opacityFactor
- * 
+ *
  * @return array
  */
 function parseStringColorValue(
@@ -607,10 +607,10 @@ function parseStringColorValue(
         \array_keys(ColorSpace::allAliases()),
         [ 'color', '(', ')' ],
     );
-    
+
     $string = \str_replace(
         search  : $replace,
-        replace : '', 
+        replace : '',
         subject : \trim((string) $value, ', '),
     );
 
@@ -662,18 +662,18 @@ function parseStringColorValue(
 
 /**
  * Adds $value to $array and returns $array.
- * 
+ *
  * By default $value will simply be pushed at the end of $array.
- * 
+ *
  * If $index is specified, $value will be added to $array with $index as a key.
  * By default if $array already contains a value with the $index key, it will not be replaced,
  * except if $replace is set to true.
- * 
+ *
  * @param mixed               $value
  * @param array               $array
  * @param string|integer|null $index
  * @param boolean             $replace
- * 
+ *
  * @return array
  */
 function push(
@@ -693,29 +693,29 @@ function push(
 }
 
 /**
- * This function is equivalent to findFromAndTo(), but with $to and $from parameters passed 
+ * This function is equivalent to findFromAndTo(), but with $to and $from parameters passed
  * as reference so they can be automatically exported to the scope from which it is called.
- * 
+ *
  * It is notably used by the to() function.
  *
  * @param  mixed                              $value
  * @param  ColorSpace|\Stringable|string|null $to
  * @param  ColorSpace|\Stringable|string|null $from
  * @param  boolean                            $throw
- * 
+ *
  * @return array
  */
 function setFromAndTo(
     mixed                               $value,
     ColorSpace|\Stringable|string|null &$to    = null,
     ColorSpace|\Stringable|string|null &$from  = null,
-    bool|null                           $throw = true,    
+    bool|null                           $throw = true,
 ) :array {
     $results = findFromAndTo(
         value    : $value,
         to       : $to,
-        from     : $from, 
-        throw    : $throw, 
+        from     : $from,
+        throw    : $throw,
     );
 
     $to   = $results['to']   ?? null;
@@ -727,7 +727,7 @@ function setFromAndTo(
 /**
  * If $haystack starts with one of the values provided in $needles, returns the needle. Otherwise the function returns false.
  * If $returnNeedle is set to false, the function will return true instead of the needle prefix.
- * 
+ *
  * Examples : startsWith('+50', '+')                 returns '+' ;
  *            startsWith('-50', [ '+', '-' ])        returns '-' ;
  *            startsWith('-50', [ '+', '-' ], false) returns true ;
@@ -765,10 +765,10 @@ function startsWith(
 }
 
 /**
- * This is the highest-level function used to convert any color value to any color space. 
- * 
+ * This is the highest-level function used to convert any color value to any color space.
+ *
  * It uses setFromAndTo() to find the color spaces corresponding to the $to and $from parameters if those are null.
- * 
+ *
  * If the conversion succeeds, it always returns an array of values, like [ 255,0,0,255 ] or [ 'FF','00','00','FF' ].
  * In case of errors, it will throw exceptions, except if $throw if set to false (or if $throw is null and $fallback is not null).
  *
@@ -777,7 +777,7 @@ function startsWith(
  * @param  ColorSpace|\Stringable|string|null $from
  * @param  array|null                         $fallback
  * @param  boolean|null                       $throw
- * 
+ *
  * @return array
  */
 function to(
@@ -790,15 +790,15 @@ function to(
     setFromAndTo(
         value    : $value,
         to       : $to,
-        from     : $from, 
-        throw    : $throw, 
+        from     : $from,
+        throw    : $throw,
     );
 
     if (!($from instanceof ColorSpace)
     || !($to instanceof ColorSpace)) {
         return $fallback;
     }
-    
+
     return toColor(
         value     : $value,
         to        : $to,
@@ -810,14 +810,14 @@ function to(
 
 
 /**
- * Converts $value to an array and returns it. 
- * 
+ * Converts $value to an array and returns it.
+ *
  * If $keep is true and $value is not already an array, the returned array will include $value.
  * If $keep is false and $value is not already an array, the returned array will be empty.
  *
  * @param  mixed   $value
  * @param  boolean $keep
- * 
+ *
  * @return array
  */
 function toArray(
@@ -835,10 +835,10 @@ function toArray(
 
 /**
  * Converts $value to an iterable and returns it.
- * 
+ *
  * If $value is an array or an instance of \Traversable it will be returned without modification.
  * Otherwise $value will be converted to an array then returned.
- * 
+ *
  * If $keep is true and $value is not already an iterabble, the returned array will include $value.
  * If $keep is false and $value is not already an iterable, the returned array will be empty.
  *
@@ -857,11 +857,11 @@ function toIterable(
 }
 
 /**
- * Converts any color value to the specified $to color space. 
+ * Converts any color value to the specified $to color space.
  * This function is notably called directly by the to() function.
- * 
+ *
  * If $from is null, it will use the $to same color space than the $to parameter.
- * 
+ *
  * If the conversion succeeds, it always returns an array of values, like [ 255,0,0,255 ] or [ 'FF','00','00','FF' ].
  * In case of errors, it will throw exceptions, except if $throw if set to false (or if $throw is null and $fallback is not null).
  *
@@ -870,7 +870,7 @@ function toIterable(
  * @param  ColorSpace|null $from
  * @param  array|null      $fallback
  * @param  boolean|null    $throw
- * 
+ *
  * @return array
  */
 function toColor(
@@ -907,7 +907,7 @@ function toColor(
     if ($from === $to) {
         return $values;
     }
-    
+
     foreach ([ $convert, $cleanTo ] as $callback) {
         if (!\function_exists($callback)) {
             return $throw
@@ -926,7 +926,7 @@ function toColor(
  * @param  ColorSpace|\Stringable|string|null $value
  * @param  ColorSpace|null                    $fallback
  * @param  boolean|null                       $throw
- * 
+ *
  * @return ColorSpace|null
  */
 function toColorSpace(
@@ -955,7 +955,7 @@ function toColorSpace(
  *
  * @param  mixed    $value  The value to validate
  * @param  callable $filter The filter used to validate the array values (if $value is an array)
- * 
+ *
  * @return boolean          True if $value is an array and if all of its values are validated using $filter, false otherwise
  */
 function validateArray(

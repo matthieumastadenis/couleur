@@ -40,11 +40,11 @@ function from(
     bool|null                          $throw    = null,
 ) :array {
     return utils\to(
-        value    : $value, 
-        to       : ColorSpace::HexRgb, 
-        from     : $from, 
-        fallback : $fallback, 
-        throw    : $throw, 
+        value    : $value,
+        to       : ColorSpace::HexRgb,
+        from     : $from,
+        fallback : $fallback,
+        throw    : $throw,
     );
 }
 
@@ -63,7 +63,7 @@ function stringify(
     $blue  = utils\cleanHexValue($blue);
     $value = $red.$green.$blue;
     $lower = null;
-    
+
     if ($alpha ?? (\strtoupper($opacity) !== 'FF')) {
         $value .= $opacity;
     }
@@ -100,7 +100,7 @@ function verify(
     mixed $value,
 ) :bool {
     return \is_string($value) && \preg_match(
-        pattern : '/^#?[0-9A-Fa-f]{3,8}$/', 
+        pattern : '/^#?[0-9A-Fa-f]{3,8}$/',
         subject : $value,
     );
 }

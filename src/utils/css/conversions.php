@@ -98,7 +98,7 @@ function toRgb(
     if (!($color instanceof CssColor)) {
         $color = CssColor::fromCss($color);
     }
-    
+
     return $color?->toRgbCoordinates()
         ?? [ 0, 0, 0, 255 ];
 }

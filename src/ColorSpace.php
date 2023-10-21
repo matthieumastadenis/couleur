@@ -22,13 +22,13 @@ use       matthieumastadenis\couleur\colors\XyzD65;
 use       matthieumastadenis\couleur\exceptions\UnsupportedColorSpace;
 
 /**
- * Represents a color space supported by Couleur. 
- * 
+ * Represents a color space supported by Couleur.
+ *
  * Can be accessed using aliases (all accepted alias are documented at https://github.com/matthieumastadenis/couleur-dev#-color-spaces).
  * Provides access to dedicated functions (clean(), from(), stringify(), verify()).
  */
 enum ColorSpace :string {
-    
+
     /* #region Cases */
 
     case Css         = Css::class;
@@ -50,16 +50,16 @@ enum ColorSpace :string {
     case XyzD65      = XyzD65::class;
 
     /* #endregion */
-    
+
     /* #region Public Static Methods */
-    
+
     /**
      * Returns an array containing all supported aliases and the corresponding ColorSpace instances.
      *
      * @return array
      */
     public static function allAliases(
-        
+
     ) :array {
         $aliases = [];
 
@@ -76,14 +76,14 @@ enum ColorSpace :string {
 
     /**
      * Returns the ColorSpace instance corresponding to the alias $name, if it exists.
-     * 
-     * If $name does not match a supported alias, an UnsupportedColorSpace Exception will be thrown by default, 
+     *
+     * If $name does not match a supported alias, an UnsupportedColorSpace Exception will be thrown by default,
      * unless a $fallback is provided or $throw is set to false. In that case, the method will return $fallback.
      *
      * @param  \Stringable|string $name     Name or alias of the desired ColorSpace
      * @param  ColorSpace|null    $fallback Fallback returned if $name is not a supported alias
      * @param  boolean|null       $throw    If false the method will not throw exceptions, $fallback will be returned instead
-     * 
+     *
      * @return static|null                  The ColorSpace instance matching the $name alias, $fallback instead
      */
     public static function fromAlias(
@@ -107,7 +107,7 @@ enum ColorSpace :string {
     }
 
     /* #endregion */
-    
+
     /* #region Public Methods */
 
     /**
@@ -116,7 +116,7 @@ enum ColorSpace :string {
      * @return array
      */
     public function aliases(
-        
+
     ) :array {
         return ($this->value)::aliases();
     }
@@ -189,5 +189,5 @@ enum ColorSpace :string {
     }
 
     /* #endregion */
-    
+
 }
